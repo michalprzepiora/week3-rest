@@ -20,48 +20,48 @@ import java.util.List;
 @RequestMapping("/cars")
 public class CarsApi {
 
-  private CarService carService;
+    private CarService carService;
 
-  @Autowired
-  public CarsApi(CarService carService) {
-    this.carService = carService;
-  }
+    @Autowired
+    public CarsApi(CarService carService) {
+        this.carService = carService;
+    }
 
-  @GetMapping
-  public List<Car> getAllCars() {
-    return carService.findAll();
-  }
+    @GetMapping
+    public List<Car> getAllCars() {
+        return carService.findAll();
+    }
 
-  @GetMapping("{id}")
-  public ResponseEntity<Car> getCarById(@PathVariable Long id) {
-    return carService.getCarById(id);
-  }
+    @GetMapping("{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
+        return carService.getCarById(id);
+    }
 
-  @GetMapping("/color/{color}")
-  public ResponseEntity<List<Car>> getCarsByColor(@PathVariable String color) {
-    return carService.getCarsByColor(color);
-  }
+    @GetMapping("/color/{color}")
+    public ResponseEntity<List<Car>> getCarsByColor(@PathVariable String color) {
+        return carService.getCarsByColor(color);
+    }
 
-  @PostMapping
-  public void addCar(@RequestParam String mark,
-      @RequestParam String model, @RequestParam String color) {
-    carService.addCar(mark, model, color);
-  }
+    @PostMapping
+    public void addCar(@RequestParam String mark,
+                       @RequestParam String model, @RequestParam String color) {
+        carService.addCar(mark, model, color);
+    }
 
-  @PutMapping("{id}")
-  public ResponseEntity<Car> replaceCarById(@PathVariable Long id, @RequestParam String mark,
-      @RequestParam String model, @RequestParam String color) {
-    return carService.replaceCarById(id, mark, model, color);
-  }
+    @PutMapping("{id}")
+    public ResponseEntity<Car> replaceCarById(@PathVariable Long id, @RequestParam String mark,
+                                              @RequestParam String model, @RequestParam String color) {
+        return carService.replaceCarById(id, mark, model, color);
+    }
 
-  @PatchMapping("{id}")
-  public ResponseEntity<Car> replaceCarFieldById(@PathVariable Long id,
-      @RequestParam String fieldName, @RequestParam String fieldValue) {
-    return carService.replaceCarFieldById(id, fieldName, fieldValue);
-  }
+    @PatchMapping("{id}")
+    public ResponseEntity<Car> replaceCarFieldById(@PathVariable Long id,
+                                                   @RequestParam String fieldName, @RequestParam String fieldValue) {
+        return carService.replaceCarFieldById(id, fieldName, fieldValue);
+    }
 
-  @DeleteMapping("{id}")
-  public ResponseEntity<Car> deleteCarById(@PathVariable Long id) {
-    return carService.deleteCarById(id);
-  }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Car> deleteCarById(@PathVariable Long id) {
+        return carService.deleteCarById(id);
+    }
 }
